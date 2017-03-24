@@ -12,11 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('Home');
 });
 Route::get('/admin', function () {
-    return view('admin');
+    return view('Admin');
 });
-Route::get('/admin', function () {
-    return view('administrateur');
+Route::get('/administrateur', function () {
+    return view('Administrateur');
+});
+Route::get('/create', function () {
+    return view('CreateArticle');
 });
