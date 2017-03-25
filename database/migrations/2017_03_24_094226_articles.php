@@ -17,7 +17,7 @@ class Articles extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('text');
-            $table->binary('pic');
+            // $table->binary('pic');
             $table-> timestamps();
             
         });

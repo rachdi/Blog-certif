@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/show', 'ArticleController@show');
+Route::post('/ajout/article','ArticleController@ajouter');
+Route::get('/editArticle/{id}','ArticleController@formEdit');
+Route::post('/modification/{id}','ArticleController@editer');
+Route::get('/deleteArticle/{id}','ArticleController@Supprimer');
