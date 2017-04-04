@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,6 +8,7 @@
 </head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.css">
 <body>
+<!-- @if(Auth::check() && Auth::user()->is_admin) -->
   <div class="ui grid">
     <div class="four wide column"></div>
     <div class="eight wide column">  
@@ -20,9 +22,7 @@
           <input type="text" name="text" id="text">
         </label>
 
-        <!-- <label for="name">texte 
-          <input type="number" name="text" id="price">
-        </label> -->
+        <input type="checkbox" name="brouillon">
         <input type="submit">
       </form>    
       <table class="ui celled table">
@@ -40,15 +40,22 @@
           <br>
           <td>
           
-           <!--  <form action="/product/sell/{{$value->id}}" method="post">
+           @if($value->brouillon == null) 
+            <form action="/home/article/{{$value->id}}" method="post">
               {{csrf_field()}}
-              <button class="ui button">+</button>
+              <button class="ui button">Publier</button>
+
+
             </form>
-            <form action="/product/restock/{{$value->id}}" method="post">
-              {{csrf_field()}}
-              <button class="ui button">-</button>
-            </form> -->
             
+
+            @else($value->brouillon == "on") 
+             <form action="/home/article/{{$value->id}}" method="post">
+              {{csrf_field()}}
+              <button class="ui button">Brouillon</button>
+
+            </form>
+            @endif
             <form action="/editArticle/{{$value->id}}"  method="get">
             {{csrf_field()}}
             <button class="red ui button ">edit</button>
@@ -58,7 +65,8 @@
               
               <button class="orange ui button">supprimer</button>
             </form>
-              
+
+           
 
           </td>
         </tr>
@@ -68,5 +76,8 @@
     </div>
     <div class="four wide column"></div>
   </div>
-
+<!--   @else -->
+  <h1>page reservé admin</h1>
+<!--   @endif
+ -->
 
